@@ -3,7 +3,7 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Claw Hub v1.3.5|",
+    Title = "Claw Hub v1.3.6|",
     SubTitle = "by Giang#4854| Team Claw Lite",
     TabWidth = 160,
     Size = UDim2.fromOffset(480, 360),
@@ -30,6 +30,36 @@ Tabs.Main:AddButton({
         Description = "",
         Callback = function()
             loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+        end
+})
+
+Tabs.Main:AddButton({
+        Title = "Ctrl + Click (Teleport)",
+        Description = "",
+        Callback = function()
+            local UIS = game:GetService("UserInputService")
+
+local Player = game.Players.LocalPlayer
+local Mouse = Player:GetMouse()
+
+
+function GetCharacter()
+   return game.Players.LocalPlayer.Character
+end
+
+function Teleport(pos)
+   local Char = GetCharacter()
+   if Char then
+       Char:MoveTo(pos)
+   end
+end
+
+
+UIS.InputBegan:Connect(function(input)
+   if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+       Teleport(Mouse.Hit.p)
+   end
+end)
         end
 })
 
@@ -1262,8 +1292,8 @@ local Section = Tabs.Update:AddSection("New Bypass AntiBan v8 🟢")
 
 local Section = Tabs.Update:AddSection("Safe 100% 🟢")
 
-local Section = Tabs.Update:AddSection("New UI ClawHub v1.3.5 🟢")
+local Section = Tabs.Update:AddSection("New UI ClawHub v1.3.6 🟢")
 
 local Section = Tabs.Update:AddSection("New Scripts Meme Sea 🟢")
 
-local Section = Tabs.Update:AddSection("New Scripts UNC 🟢")
+local Section = Tabs.Update:AddSection("New Scripts Teleport 🟢")
